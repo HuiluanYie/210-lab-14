@@ -4,7 +4,7 @@
 #include <iomanip>
 using namespace std;
 
-const int W = 20;
+const int W = 10;
 
 class Color
 {
@@ -14,9 +14,18 @@ class Color
 
     public:
     // setter
-    void set_red(int r)        { red = r; }
-    void set_green(int g)        { green = g; }
-    void set_blue(int b)        { blue = b; }
+    void set_red(int r)
+    {
+        if (r < 0)
+        {
+            cout << "invalid red value";
+            return;
+        } 
+        if (r > 225) return; // failed
+        red = r;
+    }
+    void set_green(int g) { green = g; }
+    void set_blue(int b)  { blue = b; }
 
     // getter
     int get_red()   { return red; }
@@ -35,7 +44,11 @@ class Color
 int main() {
     // declarations
     Color c;
-    
+    c.set_red(0);
+    c.set_green(0);
+    c.set_blue(0);
+
+    c.print();
 
     return 0;
 }
