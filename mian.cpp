@@ -14,18 +14,36 @@ class Color
 
     public:
     // setter
-    void set_red(int r)
+    bool set_red(int r)
     {
-        if (r < 0)
+        if (r < 0 || r > 225)
         {
-            cout << "invalid red value";
-            return;
+            cout << "invalid red value\n";
+            return false;
         } 
-        if (r > 225) return; // failed
         red = r;
+        return true;
     }
-    void set_green(int g) { green = g; }
-    void set_blue(int b)  { blue = b; }
+    bool set_green(int g)
+    {
+        if (g < 0 || g > 225)
+        {
+            cout << "invalid green value\n";
+            return false;
+        }
+        green = g;
+        return true;
+    }
+    bool set_blue(int b)
+    {
+        if (b < 0 || b > 225)
+        {
+            cout << "invalid blue value\n";
+            return false;
+        }
+        blue = b;
+        return true;
+    }
 
     // getter
     int get_red()   { return red; }
@@ -43,12 +61,27 @@ class Color
 
 int main() {
     // declarations
-    Color c;
-    c.set_red(0);
-    c.set_green(0);
-    c.set_blue(0);
-
-    c.print();
+    Color c1, c2, c3, c4, c5;
+    if (c1.set_red(-3) && c1.set_green(76) && c1.set_blue(0))
+    {
+        c1.print();
+    }
+    if (c2.set_red(23) && c2.set_green(65) && c2.set_blue(19))
+    {
+        c2.print();
+    }
+    if (c3.set_red(6) && c3.set_green(14) && c3.set_blue(-4))
+    {
+        c3.print();
+    }
+    if (c4.set_red(94) && c4.set_green(276) && c4.set_blue(1))
+    {
+        c4.print();
+    }
+    if (c5.set_red(0) && c5.set_green(0) && c5.set_blue(0))
+    {
+        c5.print();
+    }
 
     return 0;
 }
